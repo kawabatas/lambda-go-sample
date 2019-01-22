@@ -1,0 +1,5 @@
+﻿/go
+
+/sam-app/output-template.yaml
+/sam-app/**/*
+!/sam-app/**/*.go
