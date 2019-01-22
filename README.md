@@ -17,6 +17,13 @@ $ cd sam-app/
 $ sam local start-api
 ```
 
+### example
+```
+$ curl http://127.0.0.1:3000/users
+
+$ curl -X POST http://127.0.0.1:3000/users -d '{"name":"hoge","age":20}'
+```
+
 ## Build & Deploy
 ```
 $ cd sam-app/

@@ -2,8 +2,8 @@ package main
 
 import (
 	// "errors"
-	"fmt"
 	"encoding/json"
+	"fmt"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -30,7 +30,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	svc := dynamodb.New(sess)
 
 	// filt := expression.Name("name").Equal(expression.Value(name))
-	proj := expression.NamesList(expression.Name("name"), expression.Name("age"), expression.Name("created_at"))
+	proj := expression.NamesList(expression.Name("Name"), expression.Name("Age"), expression.Name("CreatedAt"))
 	// expr, err := expression.NewBuilder().WithFilter(filt).WithProjection(proj).Build()
 	expr, err := expression.NewBuilder().WithProjection(proj).Build()
 	if err != nil {
@@ -43,7 +43,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		ExpressionAttributeValues: expr.Values(),
 		FilterExpression:          expr.Filter(),
 		ProjectionExpression:      expr.Projection(),
-		TableName:                 aws.String("users"),
+		TableName:                 aws.String("SampleUsers"),
 	}
 	users, err := svc.Scan(params)
 	if err != nil {

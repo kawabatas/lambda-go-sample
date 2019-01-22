@@ -5,3 +5,5 @@
 !/sam-app/hello-world/*.go
 /sam-app/user-fetcher/*
 !/sam-app/user-fetcher/*.go
+/sam-app/user-register/*
+!/sam-app/user-register/*.go
