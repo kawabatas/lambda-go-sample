@@ -7,3 +7,5 @@
 !/sam-app/user-fetcher/*.go
 /sam-app/user-register/*
 !/sam-app/user-register/*.go
+/sam-app/user-destroyer/*
+!/sam-app/user-destroyer/*.go

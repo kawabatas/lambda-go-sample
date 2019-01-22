@@ -10,6 +10,7 @@ build:
 	GOOS=linux GOARCH=amd64 go build -o hello-world/hello-world ./hello-world
 	GOOS=linux GOARCH=amd64 go build -o user-fetcher/user-fetcher ./user-fetcher
 	GOOS=linux GOARCH=amd64 go build -o user-register/user-register ./user-register
+	GOOS=linux GOARCH=amd64 go build -o user-destroyer/user-destroyer ./user-destroyer
 
 package:
 	aws cloudformation package --template-file template.yaml --output-template-file output-template.yaml --s3-bucket lambda-go-sample-111
