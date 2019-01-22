@@ -1,5 +1,7 @@
 ﻿/go
 
 /sam-app/output-template.yaml
-/sam-app/**/*
-!/sam-app/**/*.go
+/sam-app/hello-world/*
+!/sam-app/hello-world/*.go
+/sam-app/user-fetcher/*
+!/sam-app/user-fetcher/*.go
