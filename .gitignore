@@ -3,11 +3,5 @@
 /sam-app/output-template.yaml
 /sam-app/hello-world/*
 !/sam-app/hello-world/*.go
-/sam-app/user-fetcher/*
-!/sam-app/user-fetcher/*.go
-/sam-app/user-register/*
-!/sam-app/user-register/*.go
-/sam-app/user-destroyer/*
-!/sam-app/user-destroyer/*.go
 /sam-app/echo/*
 !/sam-app/echo/*.go

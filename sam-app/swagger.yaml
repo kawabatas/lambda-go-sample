@@ -16,32 +16,6 @@ paths:
         passthroughBehavior: "when_no_match"
         httpMethod: "POST"
         type: "aws_proxy"
-  /users:
-    get:
-      responses: {}
-      x-amazon-apigateway-integration:
-        uri:
-          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UserFetcherFunction.Arn}/invocations"
-        passthroughBehavior: "when_no_match"
-        httpMethod: "POST"
-        type: "aws_proxy"
-    post:
-      responses: {}
-      x-amazon-apigateway-integration:
-        uri:
-          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UserRegisterFunction.Arn}/invocations"
-        passthroughBehavior: "when_no_match"
-        httpMethod: "POST"
-        type: "aws_proxy"
-  /users/{name}/{age}:
-    delete:
-      responses: {}
-      x-amazon-apigateway-integration:
-        uri:
-          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UserDestroyerFunction.Arn}/invocations"
-        passthroughBehavior: "when_no_match"
-        httpMethod: "POST"
-        type: "aws_proxy"
   /echo_users:
     get:
       responses: {}

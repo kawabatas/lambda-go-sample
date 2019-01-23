@@ -9,7 +9,7 @@ Description: >
 Globals:
   Function:
     Runtime: go1.x
-    Timeout: 30
+    Timeout: 5
 
 Resources:
   HelloWorldFunction:
@@ -35,48 +35,6 @@ Resources:
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
           PARAM1: VALUE
-  UserFetcherFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: user-fetcher/
-      Handler: user-fetcher
-      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LambdaGoSampleRole"
-      Tracing: Active
-      Events:
-        CatchAll:
-          Type: Api
-          Properties:
-            Path: /users
-            Method: GET
-            RestApiId: !Ref ApiGateway
-  UserRegisterFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: user-register/
-      Handler: user-register
-      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LambdaGoSampleRole"
-      Tracing: Active
-      Events:
-        CatchAll:
-          Type: Api
-          Properties:
-            Path: /users
-            Method: POST
-            RestApiId: !Ref ApiGateway
-  UserDestroyerFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: user-destroyer/
-      Handler: user-destroyer
-      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LambdaGoSampleRole"
-      Tracing: Active
-      Events:
-        CatchAll:
-          Type: Api
-          Properties:
-            Path: /users/{name}/{age}
-            Method: DELETE
-            RestApiId: !Ref ApiGateway
   EchoFunction:
     Type: AWS::Serverless::Function
     Properties:
