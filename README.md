@@ -26,6 +26,15 @@ $ curl -X POST http://127.0.0.1:3000/users -d '{"name":"hoge","age":20}'
 $ curl -X DELETE http://127.0.0.1:3000/users/hoge/20
 ```
 
+echo framework
+```
+$ curl http://127.0.0.1:3000/echo_users
+
+$ curl -X POST http://127.0.0.1:3000/echo_users -d 'name=hoge' -d 'age=20'
+
+$ curl -X DELETE http://127.0.0.1:3000/echo_users/hoge/20
+```
+
 ## Build & Deploy
 ```
 $ cd sam-app/

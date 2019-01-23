@@ -77,6 +77,32 @@ Resources:
             Path: /users/{name}/{age}
             Method: DELETE
             RestApiId: !Ref ApiGateway
+  EchoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: echo/
+      Handler: echo
+      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LambdaGoSampleRole"
+      Tracing: Active
+      Events:
+        FetchAll:
+          Type: Api
+          Properties:
+            Path: /echo_users
+            Method: GET
+            RestApiId: !Ref ApiGateway
+        Regist:
+          Type: Api
+          Properties:
+            Path: /echo_users
+            Method: POST
+            RestApiId: !Ref ApiGateway
+        Destroy:
+          Type: Api
+          Properties:
+            Path: /echo_users/{name}/{age}
+            Method: DELETE
+            RestApiId: !Ref ApiGateway
 
   ApiGateway:
     Type: AWS::Serverless::Api

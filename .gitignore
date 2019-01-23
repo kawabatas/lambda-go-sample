@@ -9,3 +9,5 @@
 !/sam-app/user-register/*.go
 /sam-app/user-destroyer/*
 !/sam-app/user-destroyer/*.go
+/sam-app/echo/*
+!/sam-app/echo/*.go
