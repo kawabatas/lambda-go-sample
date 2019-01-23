@@ -1,0 +1,63 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "lambda-go-sample-111"
+basePath: "/Prod"
+schemes:
+- "https"
+paths:
+  /hello:
+    get:
+      responses: {}
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HelloWorldFunction.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+  /users:
+    get:
+      responses: {}
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UserFetcherFunction.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+    post:
+      responses: {}
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UserRegisterFunction.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+  /users/{name}/{age}:
+    delete:
+      responses: {}
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UserDestroyerFunction.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+x-amazon-apigateway-policy:
+  Version: "2012-10-17"
+  Statement:
+  - Effect: "Deny"
+    Principal: "*"
+    Action: "execute-api:Invoke"
+    Resource:
+      Fn::Sub: "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:*/*"
+    Condition:
+      StringNotEqualsIfExists:
+        aws:sourceVpce: "vpce-XXXXXXXXXXXXXX"
+      NotIpAddressIfExists:
+        aws:SourceIp:
+        - "XXXXXXXXXXXXXX"
+  - Effect: "Allow"
+    Principal: "*"
+    Action: "execute-api:Invoke"
+    Resource:
+      Fn::Sub: "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:*/*"
