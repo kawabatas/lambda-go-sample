@@ -26,12 +26,12 @@ Resources:
             Path: /hello
             Method: GET
             RestApiId: !Ref ApiGateway
-        VpcCatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /hello
-            Method: GET
-            RestApiId: !Ref VpcApiGateway
+        # VpcCatchAll:
+        #   Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+        #   Properties:
+        #     Path: /hello
+        #     Method: GET
+        #     RestApiId: !Ref VpcApiGateway
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
           PARAM1: VALUE
@@ -88,13 +88,13 @@ Resources:
           Name: 'AWS::Include'
           Parameters:
             Location: swagger.yaml
-  VpcApiGateway:
-    Type: AWS::Serverless::Api
-    Properties:
-      EndpointConfiguration: PRIVATE
-      StageName: Prod
-      DefinitionBody:
-        'Fn::Transform':
-          Name: 'AWS::Include'
-          Parameters:
-            Location: swagger.yaml
+  # VpcApiGateway:
+  #   Type: AWS::Serverless::Api
+  #   Properties:
+  #     EndpointConfiguration: PRIVATE
+  #     StageName: Prod
+  #     DefinitionBody:
+  #       'Fn::Transform':
+  #         Name: 'AWS::Include'
+  #         Parameters:
+  #           Location: swagger.yaml
